@@ -10,28 +10,33 @@ export const navigation = [
     icon: 'plus'
   },
   {
+    text: 'Dodaj Sestavino',
+    path: '/add-ingredient',
+    icon: 'plus'
+  },
+  {
     text: 'Zajtrk',
-    path: '',
+    path: '/breakfast',
     icon: 'coffee'
   },
   {
     text: 'Malica',
-    path: '',
+    path: '/brunch',
     icon: 'key'
   },
   {
     text: 'Kosilo',
-    path: '',
+    path: '/lunch',
     icon: 'food'
   },
   {
     text: 'Večerja',
-    path: '',
+    path: '/dinner',
     icon: 'runner'
   },
   {
     text: 'Nekaj Sladkega',
-    path: '',
+    path: '/desert',
     icon: 'gift'
   },
 ];

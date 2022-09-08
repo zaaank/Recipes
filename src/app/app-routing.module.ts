@@ -5,6 +5,12 @@ import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { AddRecipeComponent } from './pages/add-recipe/add-recipe.component';
+import { AddIngredientComponent } from './pages/add-ingredient/add-ingredient.component';
+import { BreakfastComponent } from './pages/breakfast/breakfast.component';
+import { BrunchComponent } from './pages/brunch/brunch.component';
+import { LunchComponent } from './pages/lunch/lunch.component';
+import { DinnerComponent } from './pages/dinner/dinner.component';
+import { DesertComponent } from './pages/desert/desert.component';
 
 const routes: Routes = [
   {
@@ -15,6 +21,36 @@ const routes: Routes = [
   {
     path: 'add-recipe',
     component: AddRecipeComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'add-ingredient',
+    component: AddIngredientComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'breakfast',
+    component: BreakfastComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'brunch',
+    component: BrunchComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'lunch',
+    component: LunchComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'dinner',
+    component: DinnerComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'desert',
+    component: DesertComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -29,9 +65,5 @@ const routes: Routes = [
   providers: [
     AuthGuardService
   ],
-  declarations: [
-    HomeComponent,
-    AddRecipeComponent
-  ]
 })
 export class AppRoutingModule { }

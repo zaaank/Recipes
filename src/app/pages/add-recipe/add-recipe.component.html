@@ -1,3 +1,50 @@
-<p>
-  add-recipe works!
-</p>
+<div class="container" style="padding: 20px" [formGroup]="form">
+  <dx-form id="form" [formData]="formData" [colCount]="1" >
+    <dxi-item itemType="group" [colCount]="2">
+      <dxi-item
+        dataField="choose-group"
+        editorType="dxSelectBox"
+        [editorOptions]="{ placeholder: 'Izberi Skupino', items: groups }"
+      >
+        <dxo-label text="Izberi Skupino"></dxo-label>
+      </dxi-item>
+    </dxi-item>
+    <dxi-item itemType="group" [colCount]="2">
+      <dxi-item
+        dataField="name"
+        editorType="dxTextBox"
+        [editorOptions]="{ placeholder: 'Ime Recepta' }"
+      >
+        <dxo-label text="Ime Recepta"></dxo-label>
+      </dxi-item>
+      <dxi-item
+        dataField="upload-photo"
+        editorType="dxTextBox"
+        [editorOptions]="{ placeholder: 'Dodaj Sliko' }"
+      >
+        <dxo-label text="Dodaj sliko"></dxo-label>
+      </dxi-item>
+    </dxi-item>
+    <dxi-item itemType="group" [colCount]="1">
+      <dxi-item
+        dataField="description"
+        editorType="dxTextArea"
+        [editorOptions]="{ placeholder: 'Postopek' }"
+      >
+        <dxo-label text="Postopek"></dxo-label>
+      </dxi-item>
+    </dxi-item>
+  </dx-form>
+  <div>
+    <div style="color: black; font-weight: bold; font-size: 16px;">Sestavine</div>
+    <ng-container *ngFor="let ingredient of listOfIngredients; let i=index">
+      <div style="display: flex; align-items: center; margin-bottom: 10px;">
+        <dx-text-box style="flex: 1;" [text]="ingredient" placeholder="Napiši ime sestavine" label="Ime Sestavine"></dx-text-box>
+        <dx-button style="margin: 0 10px;" type="success"  [icon]="'plus'" (click)="addIngredient(i)"></dx-button>
+      </div>
+    </ng-container>
+  </div>
+  <div style="margin-top: 15px;">
+    <dx-button style="width: 100%;" type="success">Shrani Recept</dx-button>
+  </div>
+</div>

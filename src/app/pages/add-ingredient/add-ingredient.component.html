@@ -1,0 +1,37 @@
+<div class="container">
+  <dx-form [formData]="formData">
+    <dxi-item itemType="group" [colCount]="2">
+      <dxi-item
+        dataField="name"
+        [editorOptions]="{ placeholder: 'Vpiši ime sestavine' }"
+      >
+        <dxo-label text="Ime Sestavine"></dxo-label>
+      </dxi-item>
+
+      <dxi-item
+        dataField="store"
+        [editorOptions]="{ placeholder: 'Vpiši ime trgovine' }"
+      >
+        <dxo-label text="Trgovina"></dxo-label>
+      </dxi-item>
+
+      <dxi-item
+        dataField="photo"
+        [editorOptions]="{ placeholder: 'Dodaj Sliko' }"
+      >
+        <dxo-label text="Slika"></dxo-label>
+      </dxi-item>
+
+      <dxi-item
+        dataField="mark"
+        [editorOptions]="{ placeholder: 'Vpiši znamko sestavine' }"
+      >
+        <dxo-label text="Znamka"></dxo-label>
+      </dxi-item>
+    </dxi-item>
+  </dx-form>
+
+  <div style="margin-top: 15px;">
+    <dx-button style="width: 100%;" type="success">Shrani Sestavino</dx-button>
+  </div>
+</div>
