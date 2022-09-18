@@ -11,6 +11,7 @@ import { BrunchComponent } from './pages/brunch/brunch.component';
 import { LunchComponent } from './pages/lunch/lunch.component';
 import { DinnerComponent } from './pages/dinner/dinner.component';
 import { DesertComponent } from './pages/desert/desert.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,11 @@ const routes: Routes = [
   {
     path: 'desert',
     component: DesertComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'shopping-cart',
+    component: ShoppingCartComponent,
     canActivate: [ AuthGuardService ]
   },
   {

@@ -14,9 +14,14 @@ import { DesertComponent } from './pages/desert/desert.component';
 import { DinnerComponent } from './pages/dinner/dinner.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LunchComponent } from './pages/lunch/lunch.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { FooterModule, ResetPasswordFormModule, CreateAccountFormModule, ChangePasswordFormModule, LoginFormModule } from './shared/components';
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { UnauthenticatedContentModule } from './unauthenticated-content';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { RecipesStoreModule } from './store/recipes/recipes-store.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,8 @@ import { UnauthenticatedContentModule } from './unauthenticated-content';
     BrunchComponent,
     DesertComponent,
     DinnerComponent,
-    LunchComponent
+    LunchComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,13 @@ import { UnauthenticatedContentModule } from './unauthenticated-content';
     DxTextBoxModule,
     DxFormModule,
     DxTextAreaModule,
-    DxButtonModule
+    DxButtonModule,
+    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    }),
+    EffectsModule.forRoot([]),
+    RecipesStoreModule
   ],
   providers: [
     AuthService,

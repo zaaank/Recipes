@@ -5,38 +5,43 @@ export const navigation = [
     icon: 'home'
   },
   {
-    text: 'Dodaj Recept',
+    text: 'Dodaj recept',
     path: '/add-recipe',
-    icon: 'plus'
+    icon: 'fas fa-clipboard-list'
   },
   {
-    text: 'Dodaj Sestavino',
+    text: 'Dodaj sestavino',
     path: '/add-ingredient',
-    icon: 'plus'
+    icon: 'far fa-file'
   },
   {
     text: 'Zajtrk',
     path: '/breakfast',
-    icon: 'coffee'
+    icon: 'fas fa-bread-slice'
   },
   {
     text: 'Malica',
     path: '/brunch',
-    icon: 'key'
+    icon: 'fas fa-pepper-hot'
   },
   {
     text: 'Kosilo',
     path: '/lunch',
-    icon: 'food'
+    icon: 'fas fa-hamburger'
   },
   {
     text: 'Večerja',
     path: '/dinner',
-    icon: 'runner'
+    icon: 'fas fa-hotdog'
   },
   {
-    text: 'Nekaj Sladkega',
+    text: 'Nekaj sladkega',
     path: '/desert',
-    icon: 'gift'
+    icon: 'fas fa-cookie'
+  },
+  {
+    text: 'Nakupovalni seznam',
+    path: '/shopping-cart',
+    icon: 'fas fa-shopping-cart'
   },
 ];
