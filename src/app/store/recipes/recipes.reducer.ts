@@ -3,17 +3,18 @@ import { RecipesState } from "../state-models/recipes.state";
 import * as RecipesActions from "./recipes.actions";
 
 const initialState: RecipesState = {
+  availableIngredients: [],
 };
 
 export const recipesReducerFn = createReducer(
   initialState,
   // EXAMPLE
-  // on(ExperimentsActions.loadExperimentsSuccess, (state, action) => {
-  //  return {
-  //    ...state,
-  //    experiments: action.experiments,
-  //  };
-  // })
+   on(RecipesActions.SetIngredients, (state, action) => {
+    return {
+      ...state,
+      availableIngredients: action.ingredients,
+    };
+   })
 );
 
 export function recipesReducer(

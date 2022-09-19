@@ -22,6 +22,9 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { RecipesStoreModule } from './store/recipes/recipes-store.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,7 @@ import { RecipesStoreModule } from './store/recipes/recipes-store.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     SideNavOuterToolbarModule,
     FooterModule,
     ReactiveFormsModule,
@@ -48,16 +52,16 @@ import { RecipesStoreModule } from './store/recipes/recipes-store.module';
     DxTextAreaModule,
     DxButtonModule,
     StoreModule.forRoot({}, {}),
-    StoreModule.forRoot(reducers, {
-      metaReducers
-    }),
     EffectsModule.forRoot([]),
-    RecipesStoreModule
+
+    RecipesStoreModule,
+
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [
     AuthService,
     ScreenService,
-    AppInfoService
+    AppInfoService,
   ],
   bootstrap: [AppComponent]
 })

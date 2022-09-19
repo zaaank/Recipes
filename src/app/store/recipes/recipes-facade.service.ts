@@ -1,20 +1,20 @@
 import { Injectable } from "@angular/core";
 import { select, Store } from "@ngrx/store";
+import { RecipesState } from "../state-models/recipes.state";
 import * as RecipesActions from "./recipes.actions";
 import * as RecipesSelectors from "./recipes.selectors";
 
 @Injectable()
 export class RecipesFacadeService {
-  // selector example
-  // public experiments$ = this.store.pipe(
-  //  select(ExperimentsSelectors.selectExperiments)
-  // );
+   public availableIngredients$ = this.store.pipe(
+    select(RecipesSelectors.selectIngredients)
+   );
 
   // ctor example
-  // constructor(private store: Store<ExperimentsState>) {}
+   constructor(private store: Store<RecipesState>) {}
 
   // store call example
-  // loadExperiments() {
-  //  this.store.dispatch(ExperimentsActions.loadExperiments());
-  // }
+   getIngredients() {
+    this.store.dispatch(RecipesActions.getIngredients());
+   }
 }

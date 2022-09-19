@@ -5,6 +5,6 @@ const selectRecipesState =
   createFeatureSelector<RecipesState>("recipes");
 
 // EXAMPLE
-// export const selectExperiments = createSelector(
-//  selectExperimentsState,
-//  (state) => state.experiments);
+ export const selectIngredients = createSelector(
+  selectRecipesState,
+  (state) => state.availableIngredients);

@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiServiceService {
+export class AppSettingsService {
   url  = environment.apiUrl;
   apiUrl =environment.apiUrl + 'api/';
   name = 'Recipes';
