@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-add-recipe',
@@ -7,12 +7,15 @@ import { FormArray, FormGroup } from '@angular/forms';
   styleUrls: ['./add-recipe.component.scss']
 })
 export class AddRecipeComponent implements OnInit {
-  form!: FormGroup;
   formData: any = {
     'choose-group': 'Zajtrk',
   }
   groups: any = ['Zajtrk', 'Malica', 'Kosilo', 'Večerja', 'Nekaj Sladkega'];
   listOfIngredients: string[] = [''];
+
+  form!: FormGroup<{
+    ingredients: FormArray<any>,
+  }>;
   constructor() { }
 
   ngOnInit() {
@@ -20,9 +23,7 @@ export class AddRecipeComponent implements OnInit {
   }
 
   initForm() {
-    this.form = new FormGroup({
-      ingredients: new FormArray([])
-    });
+    //this.form =
     //this.form.get('ingredients')?.setValue(['']);
   }
   addIngredient(index: number) {

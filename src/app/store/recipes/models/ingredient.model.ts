@@ -1,6 +1,6 @@
 
 export interface IngredientModel {
-  id: number;
+  id?: number;
   name: string;
   storeName: string;
   mark: string;

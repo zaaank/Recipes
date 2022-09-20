@@ -14,6 +14,10 @@ export class RecipesApiService {
     return this.http.get<IngredientModel[]>(this.appSettings.apiUrl + 'Ingredient');
   }
 
+  postIngredient(ingredient: IngredientModel) {
+    return this.http.post<any>(this.appSettings.apiUrl + 'Ingredient', ingredient);
+  }
+
 
 
 }

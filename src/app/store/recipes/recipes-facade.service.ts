@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { select, Store } from "@ngrx/store";
 import { RecipesState } from "../state-models/recipes.state";
+import { IngredientModel } from "./models/ingredient.model";
 import * as RecipesActions from "./recipes.actions";
 import * as RecipesSelectors from "./recipes.selectors";
 
@@ -16,5 +17,9 @@ export class RecipesFacadeService {
   // store call example
    getIngredients() {
     this.store.dispatch(RecipesActions.getIngredients());
+  }
+
+  postIngredient(ingredient: IngredientModel) {
+    this.store.dispatch(RecipesActions.PostIngredient({ingredient}));
    }
 }

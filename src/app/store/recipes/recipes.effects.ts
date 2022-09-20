@@ -21,5 +21,14 @@ export class RecipesEffects {
       )
     )
   )
+  );
+
+  postIngredients$ = createEffect(() =>
+  this.actions.pipe(
+    ofType(RecipesActions.PostIngredient),
+    switchMap((action) =>
+      this.recipesApiService.postIngredient(action.ingredient)
+    )
+  ),{dispatch: false}
 );
 }
