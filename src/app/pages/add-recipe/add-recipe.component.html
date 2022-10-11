@@ -37,12 +37,18 @@
   </dx-form>
   <div>
     <div style="color: black; font-weight: bold; font-size: 16px;">Sestavine</div>
-    <ng-container *ngFor="let ingredient of listOfIngredients; let i=index">
-      <div style="display: flex; align-items: center; margin-bottom: 10px;">
-        <dx-text-box style="flex: 1;" [text]="ingredient" placeholder="Napiši ime sestavine" label="Ime Sestavine"></dx-text-box>
-        <dx-button style="margin: 0 10px;" type="success"  [icon]="'plus'" (click)="addIngredient(i)"></dx-button>
-      </div>
+
+    <!-- Ingredients Section -->
+    <ng-container formArrayName="ingredients">
+      <ng-container *ngFor="let ingredient of ingredients; let i = index">
+        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+          <dx-text-box [formControlName]="i" style="flex: 1;" placeholder="Napiši ime sestavine" label="Ime Sestavine"></dx-text-box>
+          <dx-button style="margin: 0 10px;" type="success"  [icon]="'plus'" (click)="addIngredient(i)"></dx-button>
+          <dx-button *ngIf="ingredients.length > 1" style="margin: 0 10px;" type="danger"  [icon]="'trash'" (click)="deleteIngredient(i)"></dx-button>
+        </div>
+      </ng-container>
     </ng-container>
+
   </div>
   <div style="margin-top: 15px;">
     <dx-button style="width: 100%;" type="success">Shrani Recept</dx-button>

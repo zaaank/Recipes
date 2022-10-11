@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
-
+import { FormArray, FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-add-recipe',
   templateUrl: './add-recipe.component.html',
@@ -14,30 +13,36 @@ export class AddRecipeComponent implements OnInit {
   listOfIngredients: string[] = [''];
 
   form!: FormGroup<{
-    ingredients: FormArray<any>,
+    ingredients:FormArray<FormControl>,
   }>;
   constructor() { }
 
+  get ingredients(): any[] {
+    return (this.form.get('ingredients') as FormArray<FormControl>).controls;
+  }
+
   ngOnInit() {
     this.initForm();
+    console.log(this.form.get("ingredients"))
   }
 
   initForm() {
-    //this.form =
-    //this.form.get('ingredients')?.setValue(['']);
-  }
-  addIngredient(index: number) {
-    let ingredients = this.form.get('ingredients') as FormArray;
-    ingredients.push('');
-   /*  let insertedItemIdx = this.listOfIngredients.length - 1;
-    let itemToInsert = this.listOfIngredients[insertedItemIdx];
-    this.listOfIngredients.forEach((ingredient, idx) => {
-      if (idx >= index) {
-          let tmp = this.listOfIngredients[index];
-          this.listOfIngredients[index] = itemToInsert;
-          itemToInsert = tmp;
-        }
-    }) */
+    this.form = new FormGroup({
+      ingredients: new FormArray<FormControl>([
+        new FormControl(null, Validators.required)
+      ])
+    })
   }
 
+  addIngredient(index: number) {
+    let ingredients = this.form.get('ingredients') as FormArray;
+    ingredients.insert(index + 1, new FormControl(null, Validators.required));
+  }
+
+  deleteIngredient(index: number) {
+    let ingredients = this.form.get('ingredients') as FormArray;
+    ingredients.removeAt(index);
+  }
 }
+
+
