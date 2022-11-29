@@ -1,8 +1,9 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AppSettingsService } from "src/app/shared/services/app-services/app-settings.service";
 import { IngredientModel } from "./models/ingredient.model";
+import { GetRecipesByGroup, PostRecipeModel } from "./models/recipe.model";
 
 
 @Injectable()
@@ -18,6 +19,14 @@ export class RecipesApiService {
     return this.http.post<any>(this.appSettings.apiUrl + 'Ingredient', ingredient);
   }
 
+  postRecipe(recipe: PostRecipeModel) {
+    return this.http.post<any>(this.appSettings.apiUrl + 'Recipe', recipe);
+  }
 
+  getRecipesByGroup(groupName: 'Zajtrk' | 'Malica' | 'Kosilo' | 'Večerja' | 'Nekaj Sladkega') : Observable<GetRecipesByGroup> {
+    const params = new HttpParams();
+    params.append('group', groupName);
+    return this.http.get<GetRecipesByGroup>(this.appSettings.apiUrl + 'Recipe', { params });
+  }
 
 }
