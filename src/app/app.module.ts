@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxButtonModule, DxFormModule, DxTextAreaModule, DxTextBoxModule } from 'devextreme-angular';
+import { DxButtonModule, DxFormModule, DxSelectBoxModule, DxTextAreaModule, DxTextBoxModule } from 'devextreme-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,6 +51,9 @@ import { environment } from '../environments/environment';
     DxFormModule,
     DxTextAreaModule,
     DxButtonModule,
+    DxSelectBoxModule,
+
+    //store
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
 

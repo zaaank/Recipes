@@ -1,7 +1,8 @@
 <div class="container" style="padding: 20px" [formGroup]="form">
-  <dx-form id="form" [formData]="formData" [colCount]="1" >
+  <dx-form id="form" [formData]="formData" [colCount]="1"  #simpleForm>
     <dxi-item itemType="group" [colCount]="2">
       <dxi-item
+        [isRequired]="true"
         dataField="choose-group"
         editorType="dxSelectBox"
         [editorOptions]="{ placeholder: 'Izberi Skupino', items: groups }"
@@ -11,6 +12,7 @@
     </dxi-item>
     <dxi-item itemType="group" [colCount]="2">
       <dxi-item
+      [isRequired]="true"
         dataField="name"
         editorType="dxTextBox"
         [editorOptions]="{ placeholder: 'Ime Recepta' }"
@@ -27,6 +29,7 @@
     </dxi-item>
     <dxi-item itemType="group" [colCount]="1">
       <dxi-item
+        [isRequired]="true"
         dataField="description"
         editorType="dxTextArea"
         [editorOptions]="{ placeholder: 'Postopek' }"
@@ -36,13 +39,11 @@
     </dxi-item>
   </dx-form>
   <div>
-    <div style="color: black; font-weight: bold; font-size: 16px;">Sestavine</div>
-
     <!-- Ingredients Section -->
     <ng-container formArrayName="ingredients">
       <ng-container *ngFor="let ingredient of ingredients; let i = index">
         <div style="display: flex; align-items: center; margin-bottom: 10px;">
-          <dx-text-box [formControlName]="i" style="flex: 1;" placeholder="Napiši ime sestavine" label="Ime Sestavine"></dx-text-box>
+          <dx-select-box [formControlName]="i" style="flex: 1;" placeholder="Napiši ime sestavine" label="Ime Sestavine" [dataSource]="listOfIngredients" valueExpr="id" [displayExpr]="displayExpr" [searchEnabled]="true" [required]="true"></dx-select-box>
           <dx-button style="margin: 0 10px;" type="success"  [icon]="'plus'" (click)="addIngredient(i)"></dx-button>
           <dx-button *ngIf="ingredients.length > 1" style="margin: 0 10px;" type="danger"  [icon]="'trash'" (click)="deleteIngredient(i)"></dx-button>
         </div>
@@ -51,6 +52,6 @@
 
   </div>
   <div style="margin-top: 15px;">
-    <dx-button style="width: 100%;" type="success">Shrani Recept</dx-button>
+    <dx-button style="width: 100%;" type="success" (click)="addNewRecipe()">Shrani Recept</dx-button>
   </div>
 </div>

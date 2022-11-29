@@ -30,5 +30,23 @@ export class RecipesEffects {
       this.recipesApiService.postIngredient(action.ingredient)
     )
   ),{dispatch: false}
+  );
+
+  postRecipe$ = createEffect(() =>
+  this.actions.pipe(
+    ofType(RecipesActions.PostRecipe),
+    switchMap((action) =>
+      this.recipesApiService.postRecipe(action.recipe)
+    )
+  ),{dispatch: false}
+  );
+
+  getRecipesByGroup$ = createEffect(() =>
+  this.actions.pipe(
+    ofType(RecipesActions.GetRecipesByGroup),
+    switchMap((action) =>
+      this.recipesApiService.getRecipesByGroup(action.groupName)
+    )
+  ),{dispatch: false}
 );
 }

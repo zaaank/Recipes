@@ -2,12 +2,13 @@ import { Injectable } from "@angular/core";
 import { select, Store } from "@ngrx/store";
 import { RecipesState } from "../state-models/recipes.state";
 import { IngredientModel } from "./models/ingredient.model";
+import { PostRecipeModel } from "./models/recipe.model";
 import * as RecipesActions from "./recipes.actions";
 import * as RecipesSelectors from "./recipes.selectors";
 
 @Injectable()
 export class RecipesFacadeService {
-   public availableIngredients$ = this.store.pipe(
+   public selectAvailableIngredients$ = this.store.pipe(
     select(RecipesSelectors.selectIngredients)
    );
 
@@ -21,5 +22,9 @@ export class RecipesFacadeService {
 
   postIngredient(ingredient: IngredientModel) {
     this.store.dispatch(RecipesActions.PostIngredient({ingredient}));
+  }
+
+  postRecipe(recipe: PostRecipeModel) {
+    this.store.dispatch(RecipesActions.PostRecipe({recipe}));
    }
 }
