@@ -25,6 +25,7 @@ import { RecipesStoreModule } from './store/recipes/recipes-store.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { RecipesTilesComponent } from './shared/components/recipes-tiles/recipes-tiles.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { environment } from '../environments/environment';
     DesertComponent,
     DinnerComponent,
     LunchComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    RecipesTilesComponent
   ],
   imports: [
     BrowserModule,

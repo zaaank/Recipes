@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, switchMap } from "rxjs/operators";
 import { RecipesApiService } from "./recipes-api.service";
 import * as RecipesActions from "./recipes.actions";
+import { IngredientModel } from "./models/ingredient.model";
 
 @Injectable()
 export class RecipesEffects {
@@ -26,9 +27,11 @@ export class RecipesEffects {
   this.actions.pipe(
     ofType(RecipesActions.PostIngredient),
     switchMap((action) =>
-      this.recipesApiService.postIngredient(action.ingredient)
+      this.recipesApiService.postIngredient(action.ingredient).pipe(
+        map((ingredient: IngredientModel) => RecipesActions.PostIngredientSuccess({ingredient}))
+      )
     )
-  ),{dispatch: false}
+  )
   );
 
   postRecipe$ = createEffect(() =>

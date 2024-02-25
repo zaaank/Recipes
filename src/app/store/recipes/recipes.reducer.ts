@@ -14,7 +14,13 @@ export const recipesReducerFn = createReducer(
       ...state,
       availableIngredients: action.ingredients,
     };
-   })
+   }),
+  on(RecipesActions.PostIngredientSuccess, (state, action) => {
+    return {
+      ...state,
+      availableIngredients: [...state.availableIngredients, action.ingredient],
+    };
+  }),
 );
 
 export function recipesReducer(

@@ -16,7 +16,7 @@ export class RecipesApiService {
   }
 
   postIngredient(ingredient: IngredientModel) {
-    return this.http.post<any>(this.appSettings.apiUrl + 'Ingredient', ingredient);
+    return this.http.post<IngredientModel>(this.appSettings.apiUrl + 'Ingredient', ingredient);
   }
 
   postRecipe(recipe: PostRecipeModel) {

@@ -12,3 +12,4 @@ export interface GetRecipesByGroup{
   directions: string;
   ingredientIds: number[];
 }
+
